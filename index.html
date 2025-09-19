@@ -5,41 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto de Vida - Adan Paz</title>
   <style>
-    /* 🎨 Estilos generales */
+    /* 🎨 Fondo animado */
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72, #2a5298);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
     }
 
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* ✨ Header con animación de entrada */
     header {
-      padding: 40px 20px;
+      padding: 60px 20px;
       background: rgba(0, 0, 0, 0.4);
-      border-bottom: 3px solid #00e1ff;
-      animation: fadeIn 2s ease-in-out;
+      border-bottom: 2px solid #00e1ff;
+      animation: fadeDown 2s ease;
     }
 
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin: 0;
-      color: #00e1ff;
-      text-shadow: 0px 0px 10px #00e1ff;
-      animation: glow 2s infinite alternate;
+      background: linear-gradient(90deg, #00e1ff, #ff00c3, #00ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 0px 20px rgba(0,225,255,0.7);
+      animation: neonPulse 2s infinite alternate;
     }
 
     header p {
       font-size: 1.2rem;
       opacity: 0.8;
+      animation: fadeIn 3s ease;
     }
 
-    /* 🔗 Menú */
+    @keyframes neonPulse {
+      from { text-shadow: 0 0 5px #00e1ff, 0 0 10px #00e1ff; }
+      to { text-shadow: 0 0 20px #ff00c3, 0 0 40px #00ff99; }
+    }
+
+    /* 🔗 Menú con efecto hover */
     nav {
-      background: #111;
+      background: rgba(0,0,0,0.8);
       padding: 15px 0;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
     nav ul {
@@ -48,92 +68,83 @@
       margin: 0;
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 30px;
     }
 
     nav ul li a {
-      color: #00e1ff;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.1rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
       position: relative;
-      transition: color 0.3s;
     }
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      left: 0;
-      bottom: -5px;
-      background: #00e1ff;
-      transition: width 0.3s;
+    nav ul li a:hover {
+      color: #00e1ff;
+      text-shadow: 0 0 10px #00e1ff, 0 0 20px #ff00c3;
     }
 
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* 📖 Contenido principal */
+    /* 📖 Contenido */
     main {
-      padding: 40px 20px;
-      animation: fadeInUp 2s ease;
+      padding: 50px 20px;
     }
 
     section {
-      background: rgba(255,255,255,0.05);
-      margin: 20px auto;
-      padding: 25px;
-      max-width: 800px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
+      background: rgba(255,255,255,0.07);
+      margin: 30px auto;
+      padding: 30px;
+      max-width: 850px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      transform: translateY(40px);
+      opacity: 0;
     }
 
-    section:hover {
-      transform: scale(1.03);
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #00e1ff, #ff00c3, #00ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    h2 {
-      color: #00e1ff;
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.6;
+    section p {
+      line-height: 1.7;
       font-size: 1.1rem;
     }
 
     /* 👣 Footer */
     footer {
       margin-top: 50px;
-      padding: 15px;
-      background: #111;
+      padding: 20px;
+      background: rgba(0,0,0,0.8);
       color: #aaa;
       font-size: 0.9rem;
+      border-top: 2px solid #00e1ff;
     }
 
-    /* ✨ Animaciones */
+    /* 🎬 Animaciones */
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
     }
 
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(30px);}
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(40px);}
       to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes glow {
-      from {text-shadow: 0 0 10px #00e1ff;}
-      to {text-shadow: 0 0 20px #00e1ff, 0 0 40px #00e1ff;}
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>✨ Mi Proyecto de Vida ✨</h1>
+    <h1>🚀 Mi Proyecto de Vida 🚀</h1>
     <p>Construyendo mi futuro paso a paso</p>
   </header>
 
@@ -150,29 +161,35 @@
   <main>
     <section id="quien-soy">
       <h2>👤 Quién Soy</h2>
-      <p>Mi nombre es <b>Adan Adonias Paz Lemus</b>, tengo <b>17 años</b> y nací en <b>Villa Nueva, Guatemala</b>. 
-      Estudié mi primaria en la <b>Escuela Guardia de Honor</b>, mis básicos en el <b>INEB</b> y actualmente estoy cursando 
-      el <b>Bachillerato en Computación</b>. Soy una persona con metas claras y con deseos de superarme cada día.</p>
+      <p>Soy <b>Adan Adonias Paz Lemus</b>, tengo <b>17 años</b> y nací en <b>Villa Nueva, Guatemala</b>.  
+      Estudié en la <b>Escuela Guardia de Honor</b> (primaria), en el <b>INEB</b> (básicos), y actualmente curso el <b>Bachillerato en Computación</b>.  
+      Me considero una persona perseverante, apasionada por la tecnología y con grandes sueños de superación.</p>
     </section>
 
     <section id="mision">
       <h2>🎯 Misión</h2>
-      <p>Formarme como un profesional íntegro en el área de la tecnología, utilizando mis conocimientos para crear soluciones que ayuden a las personas y aporten al desarrollo de mi país.</p>
+      <p>Mi misión es crecer como persona y como profesional, utilizando la tecnología para resolver problemas y ayudar a la sociedad.  
+      Deseo seguir aprendiendo cada día, desarrollando proyectos que tengan un impacto positivo en mi vida y en la de los demás.</p>
     </section>
 
     <section id="vision">
-      <h2>🚀 Visión</h2>
-      <p>Ser un desarrollador de software reconocido, capaz de innovar y crear proyectos que transformen positivamente la vida de los demás, alcanzando mis sueños y apoyando a mi familia.</p>
+      <h2>🌟 Visión</h2>
+      <p>Convertirme en un programador y desarrollador de software reconocido, capaz de innovar y aportar al desarrollo tecnológico de Guatemala, alcanzando mis sueños y apoyando a mi familia en el camino.</p>
     </section>
 
     <section id="metas">
       <h2>📌 Metas</h2>
-      <p>Entre mis principales metas se encuentran: culminar con éxito mi bachillerato, estudiar una carrera universitaria en el área de tecnología, aprender nuevos lenguajes de programación y trabajar en proyectos que aporten al futuro.</p>
+      <p>✔️ Finalizar con éxito mi bachillerato  
+         ✔️ Estudiar una carrera universitaria en tecnología  
+         ✔️ Aprender nuevos lenguajes de programación  
+         ✔️ Crear proyectos innovadores y útiles  
+         ✔️ Lograr estabilidad profesional y personal</p>
     </section>
 
     <section id="intereses">
       <h2>💡 Intereses</h2>
-      <p>Me apasiona la computación, la programación, aprender nuevas tecnologías, así como la innovación en el mundo digital. También disfruto compartir tiempo con mi familia y amigos, y seguir creciendo como persona.</p>
+      <p>Mis intereses giran en torno a la computación, la programación, el aprendizaje de nuevas tecnologías, la innovación y el crecimiento personal.  
+      También valoro mucho el tiempo con mi familia y amigos, pues ellos son mi inspiración para seguir adelante.</p>
     </section>
   </main>
 
@@ -181,19 +198,21 @@
   </footer>
 
   <script>
-
+    // 🎬 Animación al hacer scroll (revela secciones con fadeUp)
     const sections = document.querySelectorAll("section");
 
-    window.addEventListener("scroll", () => {
+    const revealSections = () => {
       sections.forEach(sec => {
-        const position = sec.getBoundingClientRect().top;
-        if (position < window.innerHeight - 100) {
-          sec.style.opacity = "1";
-          sec.style.transform = "translateY(0)";
-          sec.style.transition = "all 1s ease";
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.style.animation = "fadeUp 1.5s ease forwards";
         }
       });
-    });
+    };
+
+    window.addEventListener("scroll", revealSections);
+    window.addEventListener("load", revealSections);
   </script>
 </body>
 </html>
+
