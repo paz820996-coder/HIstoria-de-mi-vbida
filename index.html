@@ -5,61 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto de Vida - Adan Paz</title>
   <style>
-    /* 🎨 Fondo animado */
+    /* 🚀 Fondo espacial animado con estrellas */
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72, #2a5298);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      font-family: 'Orbitron', sans-serif;
       color: #fff;
-      text-align: center;
       overflow-x: hidden;
+      background: black;
     }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
-    /* ✨ Header con animación de entrada */
+    /* ✨ Header estilo holográfico */
     header {
-      padding: 60px 20px;
-      background: rgba(0, 0, 0, 0.4);
-      border-bottom: 2px solid #00e1ff;
+      padding: 70px 20px;
+      border-bottom: 2px solid rgba(0, 225, 255, 0.4);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0,225,255,0.3);
       animation: fadeDown 2s ease;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin: 0;
       background: linear-gradient(90deg, #00e1ff, #ff00c3, #00ff99);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0px 0px 20px rgba(0,225,255,0.7);
-      animation: neonPulse 2s infinite alternate;
+      text-shadow: 0 0 20px rgba(0,225,255,0.8);
+      animation: hologram 3s infinite alternate;
     }
 
     header p {
       font-size: 1.2rem;
-      opacity: 0.8;
-      animation: fadeIn 3s ease;
+      opacity: 0.9;
+      text-shadow: 0 0 10px #00e1ff;
     }
 
-    @keyframes neonPulse {
-      from { text-shadow: 0 0 5px #00e1ff, 0 0 10px #00e1ff; }
-      to { text-shadow: 0 0 20px #ff00c3, 0 0 40px #00ff99; }
+    @keyframes hologram {
+      from { text-shadow: 0 0 20px #00e1ff, 0 0 40px #ff00c3; }
+      to { text-shadow: 0 0 30px #00ff99, 0 0 60px #ff00c3; }
     }
 
-    /* 🔗 Menú con efecto hover */
+    /* 🔗 Menú futurista */
     nav {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.7);
       padding: 15px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
     }
 
     nav ul {
@@ -68,7 +69,7 @@
       margin: 0;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
     }
 
     nav ul li a {
@@ -77,27 +78,46 @@
       font-weight: bold;
       font-size: 1.1rem;
       letter-spacing: 1px;
+      padding: 8px 15px;
+      border-radius: 8px;
       transition: all 0.3s ease;
       position: relative;
+      overflow: hidden;
+    }
+
+    nav ul li a::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: #00e1ff;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::before {
+      width: 100%;
     }
 
     nav ul li a:hover {
       color: #00e1ff;
-      text-shadow: 0 0 10px #00e1ff, 0 0 20px #ff00c3;
+      text-shadow: 0 0 15px #00e1ff;
     }
 
-    /* 📖 Contenido */
+    /* 📖 Secciones con efecto glassmorphism */
     main {
-      padding: 50px 20px;
+      padding: 60px 20px;
     }
 
     section {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.08);
       margin: 30px auto;
-      padding: 30px;
+      padding: 35px;
       max-width: 850px;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 30px rgba(0,225,255,0.2);
       transform: translateY(40px);
       opacity: 0;
     }
@@ -108,32 +128,29 @@
       background: linear-gradient(90deg, #00e1ff, #ff00c3, #00ff99);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0,225,255,0.6);
     }
 
     section p {
-      line-height: 1.7;
+      line-height: 1.8;
       font-size: 1.1rem;
     }
 
-    /* 👣 Footer */
+  
     footer {
       margin-top: 50px;
       padding: 20px;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
       color: #aaa;
       font-size: 0.9rem;
-      border-top: 2px solid #00e1ff;
+      border-top: 2px solid rgba(0,225,255,0.3);
+      text-shadow: 0 0 10px #00e1ff;
     }
 
     /* 🎬 Animaciones */
     @keyframes fadeDown {
       from {opacity: 0; transform: translateY(-40px);}
       to {opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
     }
 
     @keyframes fadeUp {
@@ -143,9 +160,11 @@
   </style>
 </head>
 <body>
+  <canvas id="stars"></canvas>
+
   <header>
-    <h1>🚀 Mi Proyecto de Vida 🚀</h1>
-    <p>Construyendo mi futuro paso a paso</p>
+    <h1>⚡ Mi Proyecto de Vida ⚡</h1>
+    <p>Un camino hacia el futuro digital</p>
   </header>
 
   <nav>
@@ -163,33 +182,33 @@
       <h2>👤 Quién Soy</h2>
       <p>Soy <b>Adan Adonias Paz Lemus</b>, tengo <b>17 años</b> y nací en <b>Villa Nueva, Guatemala</b>.  
       Estudié en la <b>Escuela Guardia de Honor</b> (primaria), en el <b>INEB</b> (básicos), y actualmente curso el <b>Bachillerato en Computación</b>.  
-      Me considero una persona perseverante, apasionada por la tecnología y con grandes sueños de superación.</p>
+      Me considero apasionado por la tecnología y con grandes sueños de superación.</p>
     </section>
 
     <section id="mision">
       <h2>🎯 Misión</h2>
       <p>Mi misión es crecer como persona y como profesional, utilizando la tecnología para resolver problemas y ayudar a la sociedad.  
-      Deseo seguir aprendiendo cada día, desarrollando proyectos que tengan un impacto positivo en mi vida y en la de los demás.</p>
+      Deseo aprender cada día y desarrollar proyectos con impacto positivo en la vida de los demás.</p>
     </section>
 
     <section id="vision">
       <h2>🌟 Visión</h2>
-      <p>Convertirme en un programador y desarrollador de software reconocido, capaz de innovar y aportar al desarrollo tecnológico de Guatemala, alcanzando mis sueños y apoyando a mi familia en el camino.</p>
+      <p>Convertirme en un programador y desarrollador reconocido, capaz de innovar y aportar al desarrollo tecnológico de Guatemala, alcanzando mis sueños y apoyando a mi familia.</p>
     </section>
 
     <section id="metas">
       <h2>📌 Metas</h2>
-      <p>✔️ Finalizar con éxito mi bachillerato  
+      <p>✔️ Finalizar mi bachillerato  
          ✔️ Estudiar una carrera universitaria en tecnología  
          ✔️ Aprender nuevos lenguajes de programación  
-         ✔️ Crear proyectos innovadores y útiles  
+         ✔️ Crear proyectos innovadores  
          ✔️ Lograr estabilidad profesional y personal</p>
     </section>
 
     <section id="intereses">
       <h2>💡 Intereses</h2>
-      <p>Mis intereses giran en torno a la computación, la programación, el aprendizaje de nuevas tecnologías, la innovación y el crecimiento personal.  
-      También valoro mucho el tiempo con mi familia y amigos, pues ellos son mi inspiración para seguir adelante.</p>
+      <p>Me apasiona la computación, la programación, la innovación digital y el aprendizaje constante.  
+      También valoro el tiempo con mi familia y amigos, quienes son mi motor para seguir adelante.</p>
     </section>
   </main>
 
@@ -198,9 +217,50 @@
   </footer>
 
   <script>
-    // 🎬 Animación al hacer scroll (revela secciones con fadeUp)
-    const sections = document.querySelectorAll("section");
+ 
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
 
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 150; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2,
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+    createStars();
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+
+
+    const sections = document.querySelectorAll("section");
     const revealSections = () => {
       sections.forEach(sec => {
         const top = sec.getBoundingClientRect().top;
@@ -209,10 +269,8 @@
         }
       });
     };
-
     window.addEventListener("scroll", revealSections);
     window.addEventListener("load", revealSections);
   </script>
 </body>
 </html>
-
